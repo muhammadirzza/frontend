@@ -4,6 +4,7 @@ import { Redirect } from 'react-router-dom';
 
 class Home extends Component {
     state = {}
+    
     render() {
         if(this.props.islogin){
             return (

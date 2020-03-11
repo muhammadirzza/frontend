@@ -9,8 +9,9 @@ import 'mdbreact/dist/css/mdb.css';
 import { BrowserRouter } from 'react-router-dom';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import reducers from './redux/reducers/index'
-import ReduxThunk from 'redux-thunk'
+import reducers from './redux/reducers/index';
+import ReduxThunk from 'redux-thunk';
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
 
 const store=createStore(reducers,{},applyMiddleware(ReduxThunk))
 
