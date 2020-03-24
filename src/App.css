@@ -1,9 +1,57 @@
+:root {
+  --background-color: #3aafa9;
+  --button-signup-color: #8e8d8a;
+  --button-signin-color: #287A78;
+  --button-edit-color: #f8e9a1;
+  --button-delete-color: #f76c6c;
+  --button-update-color: #3566A2;
+  --button-cancel-color: #88bdbc;
+
+}
+
+.warnaicon{
+  color: white !important;
+}
 .App {
   text-align: center;
 }
 
-.hovererr:hover{
+.hoverer:hover{
   cursor: pointer;
+}
+.navbarhome{
+  background-color: var(--background-color);
+}
+.edit{
+  background-color: var(--button-signup-color) !important;
+  color: white !important;
+}
+.delete{
+  background-color: var(--button-delete-color) !important;
+  color: white !important;
+}
+.update{
+  background-color: var(--button-update-color) !important;
+  color: white !important;
+}
+.cancel{
+  background-color: var(--button-signup-color) !important;
+  color: white !important;
+}
+.paddingatas{
+  padding-top: 5%;
+  padding-left: 2%;
+  padding-right: 2%;
+}
+.th{
+  font-size: 20;
+}
+td{
+  vertical-align: middle !important;
+  text-align: center !important;
+}
+thead{
+  text-align: center !important;
 }
 
 /* .App-logo {

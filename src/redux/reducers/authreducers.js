@@ -5,7 +5,8 @@ const INTIAL_STATE={
     id:0,
     loading:false,
     islogin:false,
-    errormes:''
+    errormes:'',
+    role:''
 }
 
 export default (state=INTIAL_STATE, action) => {

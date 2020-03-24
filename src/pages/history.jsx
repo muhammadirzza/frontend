@@ -12,7 +12,7 @@ import { Redirect } from 'react-router-dom';
 const MySwal = withReactContent(Swal)
 
 
-class ManageAdmin extends Component{
+class History extends Component{
     state = {
         products:[],
         isModalOpen:false,
@@ -23,12 +23,9 @@ class ManageAdmin extends Component{
     }
 
     componentDidMount() {
-        Axios.get(`${API_url}/products?_expand=category`)
+        Axios.get(`${API_url}/transactions?_embed=transactiondetails&status=confirmed`)
         .then((res)=>{
-            Axios.get(`${API_url}/categories`)
-            .then((categories)=>{
-                this.setState({products:res.data, category:categories.data})
-            })
+                this.setState({products:res.data})
         }).catch((err)=>{
             console.log(err)
         })
@@ -193,57 +190,57 @@ class ManageAdmin extends Component{
     render() {
         if(this.props.User.role==='admin'){
             return(
-                <div style={{marginTop:"5%"}}>
-                    <Modal isOpen={this.state.isModalOpen} toggle={this.toggleadd}>
-                        <ModalHeader toggle={this.toggleadd}>Modal title</ModalHeader>
-                            <ModalBody>
-                                <input type="text" ref="namaadd" placeholder='Product Name' className="form-control mt-2"></input>
-                                <input type="text" ref="imageadd" placeholder='url image' className="form-control mt-2"></input>
-                                <input type="number" ref="stokadd" placeholder='Jumlah Stok' className="form-control mt-2"></input>
-                                {/* <input type="text" ref="namaadd" placeholder='Product Name' className="form-control mt-2"></input> */}
-                                <select ref="categoryadd" className='form-control mt-2'>
-                                    <option value="" hidden>Pilih Kategori</option>
-                                    {
-                                        this.rendercategoryadd()
-                                    }
-                                    {/* <option value="1" >Kategori 1</option>
-                                    <option value="2" >Kategori 2</option>
-                                    <option value="3" >Kategori 3</option> */}
-                                </select>
-                                <input type="number" ref="hargadd" placeholder='Harga' className="form-control mt-2"></input>
-                                {/* <input type="text" ref="namaadd" placeholder='Product Name' className="form-control mt-2"></input> */}
-                                <textarea cols="20" rows="5" ref="deskripsiadd" className="form-control mt-2"></textarea>
-                            </ModalBody>
-                            <ModalFooter>
-                                <Button className="rounded-pill" color="#81d4fa light-blue lighten-3" style={{color: 'white'}} onClick={this.onSaveaddDataClick}>Save</Button>{' '}
-                                <Button className="rounded-pill" color="danger" onClick={this.toggleadd}>Cancel</Button>
-                            </ModalFooter>
-                    </Modal>
+        //         <div style={{marginTop:"5%"}}>
+        //             <Modal isOpen={this.state.isModalOpen} toggle={this.toggleadd}>
+        //                 <ModalHeader toggle={this.toggleadd}>Modal title</ModalHeader>
+        //                     <ModalBody>
+        //                         <input type="text" ref="namaadd" placeholder='Product Name' className="form-control mt-2"></input>
+        //                         <input type="text" ref="imageadd" placeholder='url image' className="form-control mt-2"></input>
+        //                         <input type="number" ref="stokadd" placeholder='Jumlah Stok' className="form-control mt-2"></input>
+        //                         {/* <input type="text" ref="namaadd" placeholder='Product Name' className="form-control mt-2"></input> */}
+        //                         <select ref="categoryadd" className='form-control mt-2'>
+        //                             <option value="" hidden>Pilih Kategori</option>
+        //                             {
+        //                                 this.rendercategoryadd()
+        //                             }
+        //                             {/* <option value="1" >Kategori 1</option>
+        //                             <option value="2" >Kategori 2</option>
+        //                             <option value="3" >Kategori 3</option> */}
+        //                         </select>
+        //                         <input type="number" ref="hargadd" placeholder='Harga' className="form-control mt-2"></input>
+        //                         {/* <input type="text" ref="namaadd" placeholder='Product Name' className="form-control mt-2"></input> */}
+        //                         <textarea cols="20" rows="5" ref="deskripsiadd" className="form-control mt-2"></textarea>
+        //                     </ModalBody>
+        //                     <ModalFooter>
+        //                         <Button className="rounded-pill" color="#81d4fa light-blue lighten-3" style={{color: 'white'}} onClick={this.onSaveaddDataClick}>Save</Button>{' '}
+        //                         <Button className="rounded-pill" color="danger" onClick={this.toggleadd}>Cancel</Button>
+        //                     </ModalFooter>
+        //             </Modal>
     
-                      <MDBBtn className="rounded-pill mt-3" outline onClick={this.toggleadd} >Add Data</MDBBtn >
-                    <Table striped className="mt-4">
-                        <thead  align="center">
-                            <tr>
-                                <th style={{fontSize:20}}>No</th>
-                                <th style={{fontSize:20}}>Name</th>
-                                <th style={{fontSize:20}}>Image</th>
-                                <th style={{fontSize:20}}>Stok</th>
-                                <th style={{fontSize:20}}>Category</th>
-                                <th style={{fontSize:20}}>Harga</th>
-                                <th style={{fontSize:20}}>Deskripsi</th>
-                                <th style={{fontSize:20}}>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody align="center">
-                            {
-                                this.renderProduct()
-                            }
-                        </tbody>
-                    </Table>
-                </div>
+        //               <MDBBtn className="rounded-pill mt-3" outline onClick={this.toggleadd} >Add Data</MDBBtn >
+        //             <Table striped className="mt-4">
+        //                 <thead  align="center">
+        //                     <tr>
+        //                         <th style={{fontSize:20}}>No</th>
+        //                         <th style={{fontSize:20}}>Name</th>
+        //                         <th style={{fontSize:20}}>Image</th>
+        //                         <th style={{fontSize:20}}>Stok</th>
+        //                         <th style={{fontSize:20}}>Category</th>
+        //                         <th style={{fontSize:20}}>Harga</th>
+        //                         <th style={{fontSize:20}}>Deskripsi</th>
+        //                         <th style={{fontSize:20}}>Action</th>
+        //                     </tr>
+        //                 </thead>
+        //                 <tbody align="center">
+        //                     {
+        //                         this.renderProduct()
+        //                     }
+        //                 </tbody>
+        //             </Table>
+        //         </div>
             )
         }else{
-           return <Redirect to="/notfound"/>
+        //    return <Redirect to="/notfound"/>
         }
         
     }
@@ -253,4 +250,4 @@ const MapstatetoProps=(state)=>{
         User:state.Auth
     }
 }
-export default connect(MapstatetoProps) (ManageAdmin)
+export default connect(MapstatetoProps) (History)

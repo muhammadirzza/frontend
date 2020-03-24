@@ -11,11 +11,19 @@ import {KeepLogin} from './redux/actions';
 import { connect } from 'react-redux';
 import ManageAdmin from './pages/manageadmin';
 import Loadingdiv from './components/loading';
-import NotFound from './components/nofound'
+import NotFound from './components/nofound';
+import ProductDetail from './pages/productdetail';
+import Cart from './pages/cart';
+import SearchPage from './pages/searcpage';
+import Allproducts from './pages/allproducts';
+import Signup from './pages/signup';
+import Forgotpassword from './pages/forgotpassword'
+
+
 
 function App({KeepLogin}) {
 
-  const [Loading, setLoading]=useState(false)
+  const [Loading, setLoading]=useState(true)
 
   useEffect(()=>{
     var id = localStorage.getItem('iduser')
@@ -29,6 +37,8 @@ function App({KeepLogin}) {
       }).finally(()=>{
         setLoading(false)
       })
+    }else{
+      setLoading(false)
     }
   },[])
 
@@ -46,8 +56,13 @@ function App({KeepLogin}) {
         <Route path='/' exact component={Home}/>
         <Route path='/login' exact component={Login}/>
         <Route path='/manageadmin' exact component={ManageAdmin}/>
-        <Route path='/notfound' exact component={NotFound}/>
-
+        <Route path='/allproducts' exact component={Allproducts}/>
+        <Route path='/productdetail/:idprod' exact component={ProductDetail}/>
+        <Route path='/cart' exact component={Cart}/>
+        <Route path='/signup' exact component={Signup}/>
+        <Route path='/forgot' exact component={Forgotpassword}/>
+        <Route path='/search/:keyword' exact component={SearchPage}/>
+        <Route path='/*' exact component={NotFound}/>
       </Switch>
     </div>
   );
