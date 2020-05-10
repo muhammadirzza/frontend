@@ -73,6 +73,14 @@ render() {
             <MDBNavItem className="d-flex align-items-center">
               {
                 this.props.User.role === 'admin'?
+                <MDBNavLink to="/managetransaction">
+                  Manage Transaction
+                </MDBNavLink>
+                :
+                null
+              }
+              {
+                this.props.User.role === 'admin'?
                 <MDBNavLink to="/manageadmin">
                   Manage Admin
                 </MDBNavLink>
@@ -106,8 +114,16 @@ render() {
                     <FaUserCircle/> hallo, {capitalfirst(this.props.User.username)} 
                   </MDBDropdownToggle>
                   <MDBDropdownMenu>
-                    <MDBDropdownItem href="/forgot">Change Password</MDBDropdownItem>
-                    <MDBDropdownItem href="/history">History</MDBDropdownItem>
+                    <MDBDropdownItem >
+                      <Link to='/forgot'>
+                        Change Password
+                      </Link>
+                    </MDBDropdownItem>
+                    <MDBDropdownItem >
+                      <Link to='/history'>
+                        History
+                      </Link>
+                    </MDBDropdownItem>
                     <MDBDropdownItem href="#!">Something else here</MDBDropdownItem>
                   </MDBDropdownMenu>
                 </MDBDropdown>

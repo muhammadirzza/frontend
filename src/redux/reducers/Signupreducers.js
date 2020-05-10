@@ -16,7 +16,7 @@ export default (state=INITIAL_STATE,action)=>{
             return {...state,loading:false,issignup:true}
         case "USER_SIGNUP_FAILED":
             return{...state,loading:false,errormes:action.payload}
-        case 'ErrorClear':
+        case 'ErrorSignClear':
             return INITIAL_STATE
         default:
             return state

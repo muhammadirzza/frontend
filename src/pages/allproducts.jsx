@@ -5,7 +5,11 @@ import Numeral from 'numeral';
 // // import ProductItem from "./ProductItem"
 import {connect} from 'react-redux';
 import {capitalfirst} from './../supports/sentencecase';
-import { MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, MDBRow, MDBCol, MDBView, MDBIcon, MDBCarousel,  MDBCarouselInner, MDBCarouselItem, MDBMask } from 'mdbreact';
+import { 
+    MDBBtn, MDBCard, MDBCardBody,  
+    MDBCardTitle, MDBCardText, MDBCol 
+} from 'mdbreact';
+//MDBView, MDBIcon, MDBCarousel, MDBRow, MDBCardImage, MDBCarouselInner, MDBCarouselItem, MDBMask 
 import {CardSubtitle} from 'reactstrap';
 import {Link} from 'react-router-dom'
 // import NotLogin from './NotLogin'
@@ -69,7 +73,7 @@ class Allproducts extends Component{
     // Search and Filter
     onSearchClick=()=>{
         let inputName=this.name.value
-        let inputCat=this.name.value
+        // let inputCat=this.name.value
         let inputMin=parseInt(this.min.value)
         let inputMax=parseInt(this.max.value)
         

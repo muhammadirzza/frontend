@@ -5,17 +5,17 @@ import withReactContent from 'sweetalert2-react-content';
 const MySwal = withReactContent(Swal)
 
 
-export const ForgotUser=({username,password,newpassword})=>{
+export const ForgotUser=({usernamep,passwordp,newpassword})=>{
     return (dispatch)=>{
         dispatch({type:"USER_FORGOT_START"})
-        if(username==='' || password==='' || newpassword===''){//kalo ada input yang kosong
+        if(usernamep==='' || passwordp==='' || newpassword===''){//kalo ada input yang kosong
             dispatch({type:"USER_FORGOT_FAILED",payload:'lengkapi datanya'})
-            console.log('isi kosong')
+            console.log("lewat")
         }else{
             Axios.get(`${API_url}/users`,{
                 params:{
-                    username:username,
-                    password:password
+                    username:usernamep,
+                    password:passwordp
                 }
             })
             .then((res)=>{
@@ -49,8 +49,8 @@ export const ForgotUser=({username,password,newpassword})=>{
     }
 }
 
-export const errormessageclear=()=>{
+export const errorPass=()=>{
     return{
-        type:'ErrorClear'
+        type:'ErrorPassClear'
     }
 }

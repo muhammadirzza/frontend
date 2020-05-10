@@ -6,7 +6,14 @@ import {API_url} from './../supports/APIurl';
 import Numeral from 'numeral';
 import {capitalfirst} from './../supports/sentencecase';
 import {IsHome,NotHome} from "./../redux/actions";
-import { MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, MDBRow, MDBCol, MDBView, MDBIcon, MDBCarousel,  MDBCarouselInner, MDBCarouselItem, MDBMask } from 'mdbreact';
+import { 
+    MDBBtn, MDBCard, MDBCardBody, 
+    MDBCardTitle, MDBCardText, 
+    MDBCol, MDBView, 
+    MDBCarousel,  MDBCarouselInner, 
+    MDBCarouselItem, MDBMask 
+    } from 'mdbreact';
+//MDBCardImage, MDBRow, MDBIcon,  
 import {CardSubtitle} from 'reactstrap';
 
 class Home extends Component {

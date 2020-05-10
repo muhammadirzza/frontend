@@ -8,17 +8,20 @@ import withReactContent from 'sweetalert2-react-content';
 import {changetoRupiah} from './../supports/changetorupiah';
 import {countCart} from './../redux/actions';
 import {Redirect} from 'react-router-dom';
+import {today} from '../supports/date'
 
 const MySwal = withReactContent(Swal)
 
 class Cart extends Component {
     state={
         isicart:[],
-        isModaladdOpen:false
+        isModaladdOpen:false,
+        transactionsId:[]
     }
 
     componentDidMount() {
         this.getdata()
+        // console.log(today())
     }
 
     renderIsiData=()=>{
@@ -63,6 +66,9 @@ class Cart extends Component {
         Axios.get(`${API_url}/transactions?_embed=transactiondetails&userId=${this.props.User.id}&status=oncart`)
         .then((res)=>{
             console.log(this.props.User.id)
+            // console.log(res.data)
+            this.setState({transactionsId:res.data})
+            // console.log(this.state.transactionsId)
             // axios.get hasilnya objek, axios.all hasilnya array
             var newarrforprod=[]
             res.data[0].transactiondetails.forEach(element =>{
@@ -115,6 +121,35 @@ class Cart extends Component {
           })
     }
 
+    BayarClick = () => {
+        var method = this.refs.method.value
+        var ccid = this.refs.ccnums.value
+        var tes = this.state.transactionsId
+        var yy =new Date().getFullYear()
+        var mm =new Date().getMonth()
+        var dd =new Date().getDay()
+        var ms =new Date().getMilliseconds()
+        console.log(tes)
+        console.log(method)
+        Axios.patch(`${API_url}/transactions/${tes[0].id}`,{
+            method,
+            userId:this.props.User.id,
+            status:"pending",
+            // id:tes[0].id,
+            date:today(),
+            cc:ccid,
+            tr:method+tes[0].id+yy+mm+dd+ms
+        })
+        .then((res)=>{
+            this.getdata()
+            this.setState({isModaladdOpen:!this.state.isModaladdOpen})
+            this.setState({isicart:[]})
+            // console.log(res.data)
+        }).catch((errbayar)=>{
+            console.log(errbayar)
+        })
+    }
+
     render() {
         if(this.props.User.role==="user"){
             return (
@@ -122,14 +157,14 @@ class Cart extends Component {
                     <Modal isOpen={this.state.isModaladdOpen} toggle={this.onCheckoutClick}>
                         <ModalHeader toggle={this.toogleadd}>Add data</ModalHeader>
                         <ModalBody>
-                            <select ref='categoryadd' className='form-control mt-2'>
+                            <select ref='method' className='form-control mt-2'>
                                 <option value="" hidden>Pilih Pembayaran</option>
                                 <option value="cc">Credit Card</option>
                             </select>
-                            <input type="number" ref='hargaadd' placeholder='Masukkan Nomor Kartu ' className='form-control mt-2'/>
+                            <input type="number" ref='ccnums' placeholder='Masukkan Nomor Kartu ' className='form-control mt-2'/>
                         </ModalBody>
                         <ModalFooter>
-                            <Button color="primary">Bayar</Button>
+                            <Button color="primary" onClick={this.BayarClick}>Bayar</Button>
                         </ModalFooter>
                     </Modal>
                     <Table striped>

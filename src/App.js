@@ -17,7 +17,9 @@ import Cart from './pages/cart';
 import SearchPage from './pages/searcpage';
 import Allproducts from './pages/allproducts';
 import Signup from './pages/signup';
-import Forgotpassword from './pages/forgotpassword'
+import Forgotpassword from './pages/forgotpassword';
+import ManageTrans from './pages/manageatransaction';
+import History from './pages/history'
 
 
 
@@ -56,11 +58,13 @@ function App({KeepLogin}) {
         <Route path='/' exact component={Home}/>
         <Route path='/login' exact component={Login}/>
         <Route path='/manageadmin' exact component={ManageAdmin}/>
+        <Route path='/managetransaction' exact component={ManageTrans}/>
         <Route path='/allproducts' exact component={Allproducts}/>
         <Route path='/productdetail/:idprod' exact component={ProductDetail}/>
         <Route path='/cart' exact component={Cart}/>
         <Route path='/signup' exact component={Signup}/>
         <Route path='/forgot' exact component={Forgotpassword}/>
+        <Route path='/history' exact component={History}/>
         <Route path='/search/:keyword' exact component={SearchPage}/>
         <Route path='/*' exact component={NotFound}/>
       </Switch>

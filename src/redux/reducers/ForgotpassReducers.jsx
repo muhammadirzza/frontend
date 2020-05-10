@@ -1,22 +1,22 @@
 const INITIAL_STATE={
-    username:'',
+    // username:'',
     // id:0,
-    loading:false,
+    loadingp:false,
     ischange:false,
-    errormes:'',
-    role:''
+    errormespass:'',
+    // role:''
 }
 
 
 export default (state=INITIAL_STATE,action)=>{
     switch(action.type){
         case "USER_FORGOT_START":
-            return {...state,loading:true}
+            return {...state,loadingp:true}
         case "USER_FORGOT_SUCCESS":
-            return {...state,loading:false,ischange:true}
+            return {...state,loadingp:false,ischange:true}
         case "USER_FORGOT_FAILED":
-            return{...state,loading:false,errormes:action.payload}
-        case 'ErrorClear':
+            return{...state,loadingp:false,errormespass:action.payload}
+        case 'ErrorPassClear':
             return INITIAL_STATE
         default:
             return state

@@ -2,8 +2,8 @@ import Axios from 'axios'
 // import { USER_SIGNUP_START, USER_SIGNUP_FAILED, USER_SIGNUP_SUCCESS } from './type'
 import { API_url } from '../../supports/APIurl'
 import Swal from 'sweetalert2';
-import withReactContent from 'sweetalert2-react-content';
-const MySwal = withReactContent(Swal)
+// import withReactContent from 'sweetalert2-react-content';
+// const MySwal = withReactContent(Swal)
 
 
 export const SignupUser=({username,password,confirmpassword})=>{
@@ -51,8 +51,8 @@ export const SignupUser=({username,password,confirmpassword})=>{
     }
 }
 
-export const errormessageclear=()=>{
+export const errorSign=()=>{
     return{
-        type:'ErrorClear'
+        type:'ErrorSignClear'
     }
 }
