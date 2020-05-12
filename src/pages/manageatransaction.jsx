@@ -44,6 +44,12 @@ class ManageAdmin extends Component{
                         <td scope="row">{index+1}</td>
                         <td>{val.tr}</td>
                         <td>{val.date}</td>
+                        {
+                            val.date2? 
+                            <td>{val.date2}</td>
+                            :
+                            <td> - </td>
+                        }
                         <td>{val.user.username}</td>
                         <td>{val.method}</td>
                         <td>{val.cc}</td>
@@ -155,7 +161,7 @@ class ManageAdmin extends Component{
         }).then((resultswal)=>{
             if(resultswal.value) {
                 Axios.patch(`${API_url}/transactions/${id}`,{
-                    status:"confirmed"
+                    status:"ondelivery"
                 })
                 .then((resdelete)=>{
                     Swal.fire(
@@ -255,14 +261,15 @@ class ManageAdmin extends Component{
                     </Modal> */}
                                                                             
                       <MDBBtn className="rounded-pill mt-3" outline onClick={(e) => this.onStatusClick(e)} value='all'>All Transactions</MDBBtn >
-                      <MDBBtn className="rounded-pill mt-3" outline onClick={(e) => this.onStatusClick(e)} value='confirmed'>Confirmed</MDBBtn >
+                      <MDBBtn className="rounded-pill mt-3" outline onClick={(e) => this.onStatusClick(e)} value='delivered'>Confirmed</MDBBtn >
                       <MDBBtn className="rounded-pill mt-3" outline onClick={(e) => this.onStatusClick(e)} value='pending'>In Progress</MDBBtn >
                     <Table striped className="mt-4">
                         <thead  align="center">
                             <tr>
                                 <th style={{fontSize:20}}>No</th>
                                 <th style={{fontSize:20}}>Transaction Id</th>
-                                <th style={{fontSize:20}}>Dates</th>
+                                <th style={{fontSize:20}}>Purchasing Date</th>
+                                <th style={{fontSize:20}}>Complete Date</th>
                                 <th style={{fontSize:20}}>Name</th>
                                 <th style={{fontSize:20}}>Method</th>
                                 <th style={{fontSize:20}}>CC Number</th>

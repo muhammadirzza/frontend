@@ -127,7 +127,7 @@ class Cart extends Component {
         var tes = this.state.transactionsId
         var yy =new Date().getFullYear()
         var mm =new Date().getMonth()
-        var dd =new Date().getDay()
+        var dd =new Date().getDate()
         var ms =new Date().getMilliseconds()
         console.log(tes)
         console.log(method)
@@ -137,6 +137,7 @@ class Cart extends Component {
             status:"pending",
             // id:tes[0].id,
             date:today(),
+            date2:"",
             cc:ccid,
             tr:method+tes[0].id+yy+mm+dd+ms
         })
