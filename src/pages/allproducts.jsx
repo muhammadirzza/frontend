@@ -173,9 +173,9 @@ class Allproducts extends Component{
         // product adalah {id, name, desc, price, pic}
         return this.state.searchProducts.map((val,index)=>{
             return(
-                <MDBCol key={index}>
-                        <MDBCard style={{ width: "100%", height:"100%" }} className="">
-                            <div className="view overlay zoom" style={{ width: "100%", height:"60%" }}>
+                <MDBCol key={index} className="pt-3">
+                        <MDBCard style={{ width: "183px", height:"350px" }} className="">
+                            <div className="view overlay zoom" style={{ width: "100%", height:"150px"}}>
                                 <Link to={`/productdetail/${val.id}`} >
                                     <img 
                                         className="rounded img-fluid "
@@ -192,7 +192,7 @@ class Allproducts extends Component{
                                 <MDBCardText>
                                     <CardSubtitle className='font-weight-bold'>{'Rp.'+Numeral(val.harga).format(0.0)}</CardSubtitle>
                                 </MDBCardText>
-                                <MDBBtn href="#" className="btn rounded-pill px-2 delete" style={{width:"90px"}}>
+                                <MDBBtn href="#" className="btn rounded-pill px-2 delete" style={{width:"90px", height:"30px", fontSize:"10px", padding:8}}>
                                     {capitalfirst(val.category.nama)}
                                 </MDBBtn>
                             </MDBCardBody>

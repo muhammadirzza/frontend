@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Table, Modal, ModalBody, ModalFooter, ModalHeader, Button} from 'reactstrap';
-import {MDBBtn} from 'mdbreact';
+import {MDBBtn, MDBDataTable } from 'mdbreact';
 import Axios from 'axios';
 import { API_url } from '../supports/APIurl';
 import { connect } from 'react-redux';
@@ -19,7 +19,59 @@ class ManageAdmin extends Component{
         isModalEdit:false,
         // indexdelete:-1,
         indexedit:-1,
-        category:[]
+        category:[],
+        // columns:[
+        //     {
+        //         label: 'No',
+        //         field: 'no',
+        //         sort: 'asc',
+        //         width: 150
+        //     },
+        //     {
+        //         label: 'Name',
+        //         field: 'name',
+        //         sort: 'asc',
+        //         width: 150
+        //     },
+        //     {
+        //         label: 'Image',
+        //         field: 'image',
+        //         sort: 'asc',
+        //         width: 270
+        //     },
+        //     {
+        //         label: 'Stock',
+        //         field: 'stock',
+        //         sort: 'asc',
+        //         width: 200
+        //     },
+        //     {
+        //         label: 'Category',
+        //         field: 'category',
+        //         sort: 'asc',
+        //         width: 100
+        //     },
+        //     {
+        //         label: 'Price',
+        //         field: 'price',
+        //         sort: 'asc',
+        //         width: 150
+        //     },
+        //     {
+        //         label: 'Description',
+        //         field: 'description',
+        //         sort: 'asc',
+        //         width: 100
+        //     },
+        //     {
+        //         label: 'Action',
+        //         field: 'action',
+        //         sort: 'asc',
+        //         width: 150
+        //     }
+        // ],
+        // rows:undefined
+        
     }
 
     componentDidMount() {
@@ -28,11 +80,36 @@ class ManageAdmin extends Component{
             Axios.get(`${API_url}/categories`)
             .then((categories)=>{
                 this.setState({products:res.data, category:categories.data})
+                console.log(this.state.products)
+                // this.renderData()
             })
         }).catch((err)=>{
             console.log(err)
         })
     }
+
+    // renderData = () => {
+    //     const {products} = this.state
+    //     var tes=[]
+    //     return products.map((val,index) => {
+    //         tes.push(
+    //             {
+    //                 no: index+1,
+    //                 name: val.name,
+    //                 image: <img src={val.image} alt={val.name} width='250' height='150' style={{backgroundSize:'cover'}}/>,
+    //                 stock: val.stok,
+    //                 category: val.category.nama,
+    //                 price: val.harga,
+    //                 description: val.deskripsi,
+    //                 action:<div>
+    //                     <button className="btn edit rounded-pill" onClick={()=>this.onBtnedit(index)} style={{width:"120px"}}>Edit</button><br/>
+    //                     <button className="btn delete rounded-pill" onClick={()=>this.deleteConfirm(index,val.id)} style={{width:"120px"}}>Delete</button>
+    //                 </div> 
+    //             }
+    //         )
+    //         this.setState({rows:tes})
+    //     })
+    // }
 
     renderProduct=()=>{
         const {products} = this.state
@@ -66,7 +143,7 @@ class ManageAdmin extends Component{
             }else{
                 return (
                     <tr key={index}>
-                        <th scope="row">{index+1}</th>
+                        <td scope="row">{index+1}</td>
                         <td>{val.name}</td>
                         <td><img src={val.image} alt={val.name} width='250' height='150' style={{backgroundSize:'cover'}}/></td>
                         <td>{val.stok}</td>
@@ -74,7 +151,7 @@ class ManageAdmin extends Component{
                         <td>{changetoRupiah(val.harga)}</td>
                         <td>{val.deskripsi}</td>
                         <td>
-                            <button className="btn edit rounded-pill" onClick={()=>this.onBtnedit(index)} style={{width:"120px"}}>Edit</button>
+                            <button className="btn edit rounded-pill" onClick={()=>this.onBtnedit(index)} style={{width:"120px"}}>Edit</button><br/>
                             <button className="btn delete rounded-pill" onClick={()=>this.deleteConfirm(index,val.id)} style={{width:"120px"}}>Delete</button>
                         </td>
                     </tr>
@@ -183,7 +260,6 @@ class ManageAdmin extends Component{
 
     onBtnedit = (index) => {
         this.setState({indexedit:index})
-        console.log(index)
       }
     
     oncancelBtnedit = () => {
@@ -191,6 +267,10 @@ class ManageAdmin extends Component{
       }
 
     render() {
+        // const columns = this.state.columns
+        // const rows = this.state.rows
+        // const data = {columns,rows}
+        // console.log(rows)
         if(this.props.User.role==='admin'){
             return(
                 <div style={{marginTop:"5%"}}>
@@ -240,6 +320,14 @@ class ManageAdmin extends Component{
                             }
                         </tbody>
                     </Table>
+                    {/* <br/>
+                    <br/>
+                    <MDBDataTable
+                        striped
+                        bordered
+                        hover
+                        data={data}
+                    /> */}
                 </div>
             )
         }else{
