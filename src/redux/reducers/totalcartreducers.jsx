@@ -9,6 +9,8 @@ export default (state=INTIAL_STATE, action) => {
         //     return{...state, loading:true}
         case "COUNT_CART" :
             return{...state, loading:false,cart:+action.payload}
+        case "CART0" :
+            return{...state, loading:false,cart:action.payload}
         default :
             return state
     }

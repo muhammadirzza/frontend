@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Redirect, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Axios from 'axios';
 import {API_url} from './../supports/APIurl';
 import Numeral from 'numeral';

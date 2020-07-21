@@ -3,7 +3,8 @@ import {Table, Modal, ModalBody, ModalFooter, ModalHeader, Button} from 'reactst
 // import {MDBBtn} from 'mdbreact';
 import Axios from 'axios';
 import { API_url } from '../supports/APIurl';
-import { shallowEqual, connect } from 'react-redux';
+import { connect } from 'react-redux';
+// import {shallowEqual} from 'react-redux'
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import {changetoRupiah} from './../supports/changetorupiah';
@@ -203,7 +204,7 @@ class History extends Component{
                                 </ModalBody>
                                 <ModalFooter>
                                     {
-                                        (this.state.indexedit==-1 || this.state.products[this.state.indexedit].status==='delivered') ?
+                                        (this.state.indexedit===-1 || this.state.products[this.state.indexedit].status==='delivered') ?
                                         null
                                         :
                                         <Button className="rounded-pill" color="danger" onClick={() => this.onConfirmDelivered(this.state.indexedit)}>Delivered</Button>

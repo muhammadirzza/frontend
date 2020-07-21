@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
-import {Table, Modal, ModalBody, ModalFooter, ModalHeader, Button} from 'reactstrap';
+import {Table} from 'reactstrap';
+// import {Modal, ModalBody, ModalFooter, ModalHeader, Button} from 'reactstrap';
 import {MDBBtn} from 'mdbreact';
 import Axios from 'axios';
 import { API_url } from '../supports/APIurl';
-import { shallowEqual, connect } from 'react-redux';
+import { connect } from 'react-redux';
+// import { shallowEqual } from 'react-redux';
 import Swal from 'sweetalert2';
-import withReactContent from 'sweetalert2-react-content';
-import {changetoRupiah} from '../supports/changetorupiah';
-import {capitalfirst} from '../supports/sentencecase'
+// import withReactContent from 'sweetalert2-react-content';
+// import {changetoRupiah} from '../supports/changetorupiah';
+// import {capitalfirst} from '../supports/sentencecase'
 import { Redirect } from 'react-router-dom';
-const MySwal = withReactContent(Swal)
+// const MySwal = withReactContent(Swal)
 
 
 class ManageAdmin extends Component{

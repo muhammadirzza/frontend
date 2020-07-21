@@ -143,6 +143,7 @@ class Cart extends Component {
         })
         .then((res)=>{
             this.getdata()
+            this.props.countCart(this.props.User.id)
             this.setState({isModaladdOpen:!this.state.isModaladdOpen})
             this.setState({isicart:[]})
             // console.log(res.data)

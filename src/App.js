@@ -19,7 +19,14 @@ import Allproducts from './pages/allproducts';
 import Signup from './pages/signup';
 import Forgotpassword from './pages/forgotpassword';
 import ManageTrans from './pages/manageatransaction';
-import History from './pages/history'
+import History from './pages/history';
+import Parallax from './pages/parallax';
+import Mat from './pages/materialize';
+import LoginLogout from './components/LoginLogout';
+import HomeGramed from './pages/homegramed';
+import ProductGramed from './pages/productgramed';
+import CartGramed from './pages/cartgramed';
+// import Materialize from './pages/materialize';
 
 
 
@@ -66,6 +73,12 @@ function App({KeepLogin}) {
         <Route path='/forgot' exact component={Forgotpassword}/>
         <Route path='/history' exact component={History}/>
         <Route path='/search/:keyword' exact component={SearchPage}/>
+        <Route path='/parallax' exact component={Parallax}/>
+        <Route path='/mater' exact component={Mat}/>
+        <Route path='/teslog' exact component={LoginLogout}/>
+        <Route path='/homegramed' exact component={HomeGramed}/>
+        <Route path='/productgramed/:idprod' exact component={ProductGramed}/>
+        <Route path='/cartgramed' exact component={CartGramed}/>
         <Route path='/*' exact component={NotFound}/>
       </Switch>
     </div>

@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import {
-MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse, MDBFormInline,
+MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse,
 MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBBtn, MDBIcon
 } from "mdbreact";
 import {IsHome,NotHome,Keyword} from './../redux/actions';
 import {connect} from 'react-redux';
 import {FaUserCircle} from 'react-icons/fa';
 import {capitalfirst} from './../supports/sentencecase';
-import {Link, Redirect} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import {countCart} from './../redux/actions';
 import {FiShoppingCart} from 'react-icons/fi'
 
@@ -17,6 +17,10 @@ class Header extends Component {
 state = {
   isOpen: false,
   keyword:''
+}
+
+componentDidMount() {
+  this.props.countCart(this.props.User.id)
 }
 
 toggleCollapse = () => {
